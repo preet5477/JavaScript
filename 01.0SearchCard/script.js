@@ -5,12 +5,12 @@ const users = [
   { name: "Rohan", pic: "https://images.unsplash.com/photo-1511367461989-f85a21fda167?q=80&w=800&auto=format&fit=crop", bio: "Backend engineer who loves working with APIs and databases" },
   { name: "Ananya", pic: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=800&auto=format&fit=crop", bio: "UI/UX designer, focusing on human-centered design principles" },
   { name: "Kunal", pic: "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=800&auto=format&fit=crop", bio: "DevOps enthusiast who automates workflows and deployments" }
-];
+]; 
 
 // Function to render user cards
 function showUsers(arr) {
   const container = document.querySelector(".cards");
-  container.innerHTML = ""; // clear existing cards
+  container.innerHTML = ""; //  clear existing cards
 
   if(arr.length==0){//"Empty";
     const h2 = document.createElement("h2");
