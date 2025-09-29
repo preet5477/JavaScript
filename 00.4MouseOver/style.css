@@ -1,0 +1,19 @@
+*{
+    margin: 0;padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    width: 100%;height: 100%;
+}
+body{
+    position: relative;
+    overflow: hidden;
+}
+#abcd{
+    position: absolute;
+    width: 100px;height: 100px;
+    background-color: cadetblue;
+
+    text-align: center;justify-content: center;
+    transition:cubic-bezier(0.19, 1, 0.22, 1) 1s;
+}

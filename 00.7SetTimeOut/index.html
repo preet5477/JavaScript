@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download Bar with %</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="download-container">
+    <h2>Downloading...</h2>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill">
+        <span id="progress-text">0</span>%
+      </div>
+    </div>
+
+    <!-- Extra info -->
+    <div class="progress-info">
+      <span id="downloaded">0 </span> MB / <span id="total">100 MB</span>
+    </div>
+    <div class="success"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

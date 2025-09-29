@@ -1,0 +1,39 @@
+*{
+    padding: 0;margin: 0;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+#main{
+    width: 100%;height: 100%;
+    background-color: darkgrey;
+    display: block;
+}
+form{    
+    padding: 10px;
+}
+
+.card{
+    max-width: 200px;
+    padding: 20px;margin: 40px;
+    border: 1px solid black;
+    border-radius: 10px ;
+    display: inline-block;
+    color: white;
+    background-color: teal;
+}
+.profile{
+    width: 50px;height: 50px;
+    background-color: red;
+    border-radius: 50px;
+    overflow: hidden;
+}
+.card p{
+    font-size: 10px;
+}
+.profile img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

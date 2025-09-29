@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .btn{
+        color:pink;background-color: purple;width: 70px;height: 25px;border: 2px solid gray;border-radius: 30px;
+    }
+    
+</style>
+<body >
+    <script src="script.js"></script>
+
+    <div style="width: auto;">
+        <h3 id="head1">Hello 1</h3>
+    </div>
+    
+    <div id="div2">
+        <h3 id="head2">Hello 2</h3>
+    </div>
+
+    <div id="imgDiv">        
+        <img width="180" src="https://media.istockphoto.com/id/1127245421/photo/woman-hands-praying-for-blessing-from-god-on-sunset-background.webp?a=1&b=1&s=612x612&w=0&k=20&c=Fbysb-YHuALb_Jyi4Q8Lw2QEVIFa3WSaPsvneGr7Q_8=" alt="Bfr">
+    </div>
+    
+    <div class="Main" >
+        <button title="Change" class="btn" id="btnChange"  onclick="onChange()" onmouseover="onChangeStyle()" >Change</button>
+        <button title="Add" class="btn" onclick="onAdd()">Add</button>
+        <button title="edit" class="btn" onclick="edit()">Edit</button>
+        <button title="Refresh" class="btn" onclick="location.reload()">Refresh</button>
+        <button title="Remove" class="btn" onclick="onRemove()">Remove</button>
+        <input type="textbox" id="inp" placeholder="name"></input>
+        <button class="enentlis"> Event Listener</button>
+    </div>
+    <div>
+        <H3 id="hLan" style="text-transform: capitalize;">Hii Language Select kro</H3>
+        <select id="dlLng">            
+            <option selected value=" "> Select Language</option>
+            <option value="Hindi">hiNDI</option>
+            <option value="English">enLISH</option>
+            <option value="Marati">MARATHI</option>
+            <option value="Urdu">URDU</option>
+        </select>
+    </div>
+
+    <script src="eventListener.js"></script>
+</body>
+
+</html>

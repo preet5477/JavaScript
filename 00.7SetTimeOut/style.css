@@ -1,0 +1,56 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #b3c2da;
+  font-family: Arial, sans-serif;
+}
+
+.download-container {
+  width: 400px;
+  background: #cfc3c3;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+h2 {
+  margin: 0 0 12px;
+  font-size: 18px;
+  color: #333;
+  text-align: center;
+}
+
+.progress-bar {
+  background: #e9eef5;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 28px;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%; /* JS will update this */
+  background: linear-gradient(90deg, #1e90ff, #00c58b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  transition: width 0.5s ease;
+}
+
+.progress-fill span {
+  position: relative;
+  z-index: 2;
+  font-size: 14px;
+}
+
+.progress-info {
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+  color: #555;
+}

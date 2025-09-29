@@ -1,0 +1,25 @@
+body {
+  background: white;
+  color: black;
+}
+
+body.dark {
+  background: black;
+  color: white;
+}
+
+body.light {
+  background: white;
+  color: black;
+}
+
+/* Toggle container */
+.toggle-btn {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  background: #ea1a1a;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
