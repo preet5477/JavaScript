@@ -33,5 +33,5 @@ toggle.addEventListener("click", () => {
     let newTheme = document.body.classList.contains("light") ? "dark" : "light";
     applyTheme(newTheme);
     localStorage.setItem("theme", newTheme);
-    console.log("Theme set to:", newTheme);
+    console.log("Theme set to:", newTheme); 
 });
