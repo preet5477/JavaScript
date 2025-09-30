@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: aliceblue;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Show only the top card */
+.card-stack {
+  position: absolute;      /* all cards overlap */
+  top: 50%;
+  left: 50%;
+  /* transform: translate(-50%, -50%); */
+  /* transition: all 0.4s ease; */
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Only the first card visible */
+
+.card-stack:nth-child(1){ 
+    z-index:3;
+    opacity: 1;
+    visibility: visible;
+}
+
+.card-stack:nth-child(2){
+    z-index:2;    
+    transform: translateY(10px) scale(0.98);
+    opacity: 0.9;
+}
+
+.card-stack:nth-child(3){
+    z-index:1;    
+    transform: translateY(20px) scale(0.96);
+    opacity: 0.7;
+}
+/* .card-stack.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 3;
+} */

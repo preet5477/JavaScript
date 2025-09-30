@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard & New Call Note</title>
+    <!-- Load Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font family -->
+</head>
+<link rel="stylesheet" href="style.css">
+<body class="bg-white-900 min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
+
+    <!-- Main div -->
+    <div id="main-dashboard" class="flex flex-col sm:flex-row items-center justify-center h-full">
+        
+        <!-- Left Control Buttons -->
+        <div class="flex flex-col space-y-4 mr-10 mb-8 sm:mb-0">
+            <!-- PLUS Button to open the Modal -->
+            <button 
+                id="plus-button" 
+                class="text-white bg-gray-700 hover:bg-red-500 rounded-full w-10 h-10 flex items-center justify-center text-2xl font-light shadow-lg transition duration-200 ease-in-out"
+                title="Create New Call Note"
+            >
+                +
+            </button>
+            <button  id="nextBtn" class="text-white bg-gray-700 hover:bg-gray-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition duration-200 ease-in-out" title="Move Up">
+                ↑
+            </button>
+            <button id="prevBtn" class="text-white bg-gray-700 hover:bg-gray-600 rounded-full w-10 h-10 flex items-center justify-center shadow-lg transition duration-200 ease-in-out" title="Move Down">
+                ↓
+            </button>
+        </div>
+
+        <!-- Central User Card (Matching the second screenshot) -->
+        <div id="user-card" class="card-stack bg-gray-800 text-white p-6 rounded-2xl w-80 shadow-2xl relative ">
+            
+        </div>
+
+        <!-- Right Color -->
+        <div class="flex flex-col space-y-4 mb-8 sm:mb-0">
+            <button class="w-4 h-4 rounded-full bg-black"></button>
+            <button class="w-4 h-4 rounded-full bg-purple-500"></button>
+            <button class="w-4 h-4 rounded-full bg-teal-500"></button>
+            <button class="w-4 h-4 rounded-full bg-orange-500"></button>
+        </div>
+    </div>
+
+
+   <!-- New Call Page -->
+    <div id="call-form-modal" class="fixed inset-0 bg-white-900 bg-opacity-70 flex items-center justify-center p-4 z-50 hidden transition-opacity duration-300">
+        
+        <!-- Form Container (Card) -->
+        <div class="bg-gray-800 text-white w-full max-w-md p-6 sm:p-8 rounded-2xl shadow-2xl">
+           
+            <h1 class="text-2xl font-semibold mb-6">New Call</h1>
+
+            <!-- Form Start -->
+            <form id="new-call-form">
+                
+                <!-- Input Field: Image URL -->
+                <div class="mb-4">
+                    <label for="image-url" class="block text-sm font-medium text-gray-300 mb-2">Image URL</label>
+                    <input required
+                        type="url" 
+                        id="image-url" 
+                        name="imageUrl"
+                        placeholder="https://example.com/photo.jpg" 
+                        class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-red-500 focus:border-red-500 placeholder-gray-400 transition duration-150 ease-in-out"
+                    >
+                </div>
+
+                <!-- Input Field: Full Name -->
+                <div class="mb-4">
+                    <label for="full-name" class="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
+                    <input required
+                        type="text" 
+                        id="full-name" 
+                        name="fullName"
+                        placeholder="Enter full name" 
+                        class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-red-500 focus:border-red-500 placeholder-gray-400 transition duration-150 ease-in-out"
+                        required
+                    >
+                </div>
+
+                <!-- Input Field: Home Town -->
+                <div class="mb-4">
+                    <label for="home-town" class="block text-sm font-medium text-gray-300 mb-2">Home Town</label>
+                    <input required
+                        type="text" 
+                        id="home-town" 
+                        name="homeTown"
+                        placeholder="Enter home town" 
+                        class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-red-500 focus:border-red-500 placeholder-gray-400 transition duration-150 ease-in-out"
+                    >
+                </div>
+
+                <!-- Input Field: Purpose (Note) -->
+                <div class="mb-6">
+                    <label for="purpose" class="block text-sm font-medium text-gray-300 mb-2">Purpose</label>
+                    <input required
+                        type="text" 
+                        id="purpose" 
+                        name="purpose"
+                        placeholder="e.g... Quick appointment note" 
+                        class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-red-500 focus:border-red-500 placeholder-gray-400 transition duration-150 ease-in-out"
+                    >
+                </div>
+
+                <!-- Radio Group: Category -->
+                <div class="mb-8">
+                    <label class="block text-sm font-medium text-gray-300 mb-3">Category</label>
+                    
+                    <!-- Category Options -->
+                    <div class="space-y-3">
+                        <!-- Option: Emergency -->
+                        <div class="flex items-center">
+                            <input id="category-emergency" name="category" type="radio" value="Emergency" class="h-4 w-4 text-red-500 bg-gray-700 border-gray-600 focus:ring-red-500">
+                            <label for="category-emergency" class="ml-3 block text-sm text-white">Emergency</label>
+                        </div>
+
+                        <!-- Option: Important -->
+                        <div class="flex items-center">
+                            <input id="category-important" name="category" type="radio" value="Important" class="h-4 w-4 text-red-500 bg-gray-700 border-gray-600 focus:ring-red-500">
+                            <label for="category-important" class="ml-3 block text-sm text-white">Important</label>
+                        </div>
+
+                        <!-- Option: Urgent -->
+                        <div class="flex items-center">
+                            <input id="category-urgent" name="category" type="radio" value="Urgent" class="h-4 w-4 text-red-500 bg-gray-700 border-gray-600 focus:ring-red-500">
+                            <label for="category-urgent" class="ml-3 block text-sm text-white">Urgent</label>
+                        </div>
+
+                        <!-- Option: No Rush -->
+                        <div class="flex items-center">
+                            <input id="category-no-rush" name="category" type="radio" value="No Rush" class="h-4 w-4 text-red-500 bg-gray-700 border-gray-600 focus:ring-red-500">
+                            <label for="category-no-rush" class="ml-3 block text-sm text-white">No Rush</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button: Create Note -->
+                <button id="btnSubmit"
+                    type="submit" 
+                    class="w-full bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-4 rounded-lg transition duration-150 ease-in-out shadow-lg mb-3"
+                >
+                    Create Note
+                </button>
+
+                <!-- Close Button -->
+                <button 
+                    type="button" 
+                    id="close-button"
+                    class="w-full bg-red-800 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-lg transition duration-150 ease-in-out shadow-lg"
+                >
+                    Close
+                </button>
+
+            </form>
+            <!-- Form End -->
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    </body>
+</html>
