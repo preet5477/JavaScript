@@ -1,0 +1,119 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced JS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-300">
+    <div class="flex flex-col items-center justify-center min-h-screen">
+        <h1 class="text-2xl font-bold mb-6">Student Registration Form</h1>
+        <form id="student-form" class="bg-white p-6 rounded shadow-md w-full max-w-sm space-y-4">
+            <div>
+                <label for="student-id" class="block text-gray-700 mb-1">ID</label>
+                <input type="text" id="student-id" name="id" required class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+            <div>
+                <label for="student-name" class="block text-gray-700 mb-1">Name</label>
+                <input type="text" id="student-name" name="name" required class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+            <div>
+                <label for="student-age" class="block text-gray-700 mb-1">Age</label>
+                <input type="number" id="student-age" name="age" min="1" required class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+            <div>
+                <label for="student-mobile" class="block text-gray-700 mb-1">Mobile Number</label>
+                <input type="tel" id="student-mobile" name="mobile" pattern="[0-9]{10}" required class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="10 digit number">
+            </div>
+            <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Register</button>
+        </form>
+        <div id="student-result" class="mt-6 w-full max-w-sm"></div>
+    </div>
+    <script>
+        const form = document.getElementById('student-form');
+        const resultDiv = document.getElementById('student-result');
+        // Auto-generate and increment student ID
+        function getNextStudentId() {
+            let details = JSON.parse(localStorage.getItem('details')) || [];
+            if (details.length === 0) return 1;
+            // Find the max id in existing details
+            let maxId = Math.max(...details.map(d => Number(d.id) || 0));
+            return maxId + 1;
+        }
+
+        // Set the ID field as readonly and initialize its value
+        const idInput = document.getElementById('student-id');
+        idInput.readOnly = true;
+        idInput.value = getNextStudentId();
+
+        // Update ID after each registration
+        form.addEventListener('submit', function() {
+            idInput.value = getNextStudentId();
+        });
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const id = document.getElementById('student-id').value.trim();
+            const name = document.getElementById('student-name').value.trim();
+            const age = document.getElementById('student-age').value.trim();
+            const mobile = document.getElementById('student-mobile').value.trim();
+            // Get existing details from localStorage or initialize as empty array
+            let details = JSON.parse(localStorage.getItem('details')) || [];
+            // Add new student data
+            details.push({ id, name, age, mobile });
+            // Save back to localStorage
+            localStorage.setItem('details', JSON.stringify(details));
+            resultDiv.innerHTML = `
+                <div class="bg-green-100 text-green-800 p-4 rounded shadow">
+                    <h2 class="font-semibold mb-2">Student Registered:</h2>
+                    <ul class="list-disc pl-5">
+                        <li><strong>ID:</strong> ${id}</li>
+                        <li><strong>Name:</strong> ${name}</li>
+                        <li><strong>Age:</strong> ${age}</li>
+                        <li><strong>Mobile:</strong> ${mobile}</li>
+                    </ul>
+                </div>
+            `;
+            form.reset();
+        });
+        
+        const showAllBtn = document.createElement('button');
+        showAllBtn.textContent = 'Show All Students';
+        showAllBtn.className = 'mt-4 bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-800 transition w-full max-w-sm';
+        form.parentNode.insertBefore(showAllBtn, resultDiv);
+
+        showAllBtn.addEventListener('click', function () {
+            const details = JSON.parse(localStorage.getItem('details')) || [];
+            if (details.length === 0) {
+                resultDiv.innerHTML = `<div class="bg-yellow-100 text-yellow-800 p-4 rounded shadow">No students registered yet.</div>`;
+                return;
+            }
+            let html = `
+                <div class="bg-white p-4 rounded shadow">
+                    <h2 class="font-semibold mb-2">All Registered Students:</h2>
+                    <table class="w-full text-left border">
+                        <thead>
+                            <tr>
+                                <th class="border px-2 py-1">ID</th>
+                                <th class="border px-2 py-1">Name</th>
+                                <th class="border px-2 py-1">Age</th>
+                                <th class="border px-2 py-1">Mobile</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${details.map(d => `
+                                <tr>
+                                    <td class="border px-2 py-1">${d.id}</td>
+                                    <td class="border px-2 py-1">${d.name}</td>
+                                    <td class="border px-2 py-1">${d.age}</td>
+                                    <td class="border px-2 py-1">${d.mobile}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            resultDiv.innerHTML = html;
+        });
+    </script>
+</body>
+</html>
