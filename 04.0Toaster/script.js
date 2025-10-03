@@ -5,7 +5,7 @@ let getOrCreateToastContainer = (config) => {
     if (!container) {
         container = document.createElement('div');
         container.className = `toaster-container ${config.positionX === "right" ? "right-5" : "left-5" } fixed p-10
-            flex flex-col items-start gap-4 z-50 ${config.positionY === "top" ? "top-5" : "bottom-5"}`;
+            flex flex-col items-start gap-1 z-50 ${config.positionY === "top" ? "top-5" : "bottom-5"}`;
         document.body.appendChild(container);
     }
     return container;
@@ -44,7 +44,7 @@ let toast = createTo({
     duration: 3,
     theme: "dark",
     positionX: "right",
-    positionY: "top"
+    positionY: "bottom"
 });
 
 toast("HELLO toaster");
